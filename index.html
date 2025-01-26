@@ -3,142 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkedIn Post Viewer</title>
+  <title>Velocity Vanguard - Apple Style</title>
   <style>
     /* Global Styling */
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: #1d1d1f;
       background-color: #f5f5f7;
+      color: #1d1d1f;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       height: 100vh;
       overflow: hidden;
     }
 
-    /* Left Main Content */
-    .main-content {
-      flex: 1;
+    /* Header Styling */
+    header {
+      background-color: #ffffff;
+      padding: 20px 40px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 40px;
-      background: #f5f5f7;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .main-content h1 {
-      font-size: 48px;
+    header h1 {
+      font-size: 24px;
       font-weight: 600;
-      margin-bottom: 20px;
     }
 
-    .main-content p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #6e6e73;
-      max-width: 600px;
-      text-align: center;
+    header nav a {
+      margin-left: 20px;
+      font-size: 16px;
+      color: #1d1d1f;
+      text-decoration: none;
     }
 
-    /* Right Widget Bar */
-    .widget-bar {
-      width: 540px;
-      background: #ffffff;
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Layout */
+    .main-content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .left-content {
+      flex: 3;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    .right-widget {
+      flex: 1;
+      background-color: #ffffff;
       border-left: 1px solid #d2d2d7;
-      box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
+      box-shadow: -4px 0 6px rgba(0, 0, 0, 0.05);
+      overflow-y: auto;
+      padding: 20px;
     }
 
-    .post-container {
-      scroll-snap-align: start;
-      padding: 20px;
+    .post-widget {
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
     }
 
     iframe {
       width: 100%;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
     }
 
-    /* Scrollbar Styling */
-    .widget-bar::-webkit-scrollbar {
-      width: 8px;
+    /* Footer */
+    footer {
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #d2d2d7;
     }
 
-    .widget-bar::-webkit-scrollbar-thumb {
-      background-color: #888;
-      border-radius: 4px;
-    }
-
-    .widget-bar::-webkit-scrollbar-thumb:hover {
-      background-color: #555;
-    }
-
-    .widget-bar::-webkit-scrollbar-track {
-      background-color: #f5f5f7;
+    footer p {
+      font-size: 14px;
+      color: #6e6e73;
     }
   </style>
 </head>
 <body>
-  <!-- Left Content -->
+  <!-- Header -->
+  <header>
+    <h1>Velocity Vanguard</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
   <div class="main-content">
-    <div>
-      <h1>Explore LinkedIn Posts</h1>
-      <p>
-        Stay updated with the latest posts from Velocity Vanguard. Scroll through the widget bar to view each LinkedIn post in its full glory.
-      </p>
+    <!-- Left Content: Main Apple-Style Section -->
+    <div class="left-content">
+      <h2>Welcome to Velocity Vanguard</h2>
+      <p>Explore the latest updates, partnerships, and milestones of Velocity Vanguard. Stay inspired as we push the boundaries of F1 in Schools!</p>
+
+      <h3>About Us</h3>
+      <p>Velocity Vanguard is dedicated to innovation, teamwork, and precision. With the support of our partners, we’re setting the standard for excellence in the F1 in Schools competition.</p>
+
+      <h3>Our Journey</h3>
+      <p>From local competitions to the global stage, our story is a testament to resilience and collaboration. We thank our sponsors for believing in us every step of the way.</p>
+
+      <h3>Join the Mission</h3>
+      <p>Discover more about our team, our values, and how you can get involved. Together, let’s make history!</p>
+    </div>
+
+    <!-- Right Widget: LinkedIn Posts -->
+    <div class="right-widget">
+      <div class="post-widget">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="1404" title="Post 1"></iframe>
+      </div>
+      <div class="post-widget">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="711" title="Post 2"></iframe>
+      </div>
+      <div class="post-widget">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="816" title="Post 3"></iframe>
+      </div>
+      <div class="post-widget">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="1047" title="Post 4"></iframe>
+      </div>
+      <div class="post-widget">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="1046" title="Post 5"></iframe>
+      </div>
+      <div class="post-widget">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="837" title="Post 6"></iframe>
+      </div>
     </div>
   </div>
 
-  <!-- Right Widget Bar -->
-  <div class="widget-bar">
-    <div class="post-container" style="height: 1404px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536"></iframe>
-    </div>
-    <div class="post-container" style="height: 711px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336"></iframe>
-    </div>
-    <div class="post-container" style="height: 816px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096"></iframe>
-    </div>
-    <div class="post-container" style="height: 1047px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792"></iframe>
-    </div>
-    <div class="post-container" style="height: 1046px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464"></iframe>
-    </div>
-    <div class="post-container" style="height: 837px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241"></iframe>
-    </div>
-    <div class="post-container" style="height: 795px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761"></iframe>
-    </div>
-    <div class="post-container" style="height: 753px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248"></iframe>
-    </div>
-    <div class="post-container" style="height: 879px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457"></iframe>
-    </div>
-    <div class="post-container" style="height: 774px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896"></iframe>
-    </div>
-    <div class="post-container" style="height: 753px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672"></iframe>
-    </div>
-    <div class="post-container" style="height: 837px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016"></iframe>
-    </div>
-    <div class="post-container" style="height: 1110px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296"></iframe>
-    </div>
-    <div class="post-container" style="height: 816px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585"></iframe>
-    </div>
-    <div class="post-container" style="height: 627px;">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466"></iframe>
-    </div>
-  </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Velocity Vanguard. All rights reserved.</p>
+  </footer>
 </body>
 </html>
