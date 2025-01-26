@@ -3,104 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velocity Vanguard | F1 in Schools</title>
+    <title>Social Media Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background: #1e1e2f;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        nav {
-            background: #ff3333;
-            color: #fff;
-            padding: 0.5rem 1rem;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #f5f5f7;
+            background-color: #1d1d1f;
             display: flex;
-            justify-content: space-around;
+            flex-direction: row;
+            height: 100%;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
+
+        .feed-column {
+            flex: 1;
+            padding: 20px;
+            overflow: auto;
         }
-        section {
-            padding: 2rem;
-            text-align: center;
+
+        .linkedin-feed {
+            border-right: 2px solid rgba(255, 255, 255, 0.1);
         }
-        .team-info, .sponsors, .contact {
-            margin: 2rem 0;
-        }
-        footer {
-            background: #1e1e2f;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            position: relative;
-        }
-        .logo {
-            max-width: 150px;
-            margin: 0 auto;
-        }
-        .sponsor-logos img {
-            max-width: 100px;
-            margin: 0.5rem;
-        }
-        button {
-            padding: 0.5rem 1rem;
+
+        iframe {
+            width: 100%;
+            margin-bottom: 20px;
             border: none;
-            background: #ff3333;
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
-        button:hover {
-            background: #d40000;
+
+        .instagram-feed blockquote.instagram-media {
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .instagram-feed blockquote.instagram-media a {
+            color: #0071e3;
         }
     </style>
+    <script async src="//www.instagram.com/embed.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Velocity Vanguard</h1>
-        <p>F1 in Schools - UK Professional Class</p>
-    </header>
-    <nav>
-        <a href="#about">About Us</a>
-        <a href="#sponsors">Sponsors</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="about">
-        <h2>About Us</h2>
-        <p>We are Velocity Vanguard, a passionate team competing in the F1 in Schools UK Professional Class. Our goal is to innovate, design, and excel in every aspect of the competition while promoting STEM education.</p>
-        <img class="logo" src="team-logo.png" alt="Team Logo">
-    </section>
-    <section id="sponsors" class="sponsors">
-        <h2>Our Sponsors</h2>
-        <p>We thank our incredible sponsors for making our journey possible:</p>
-        <div class="sponsor-logos">
-            <img src="sponsor1.png" alt="Sponsor 1">
-            <img src="sponsor2.png" alt="Sponsor 2">
-            <img src="sponsor3.png" alt="Sponsor 3">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="1404" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-        </div>
-    </section>
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <p>Have questions or want to partner with us? Reach out!</p>
-        <button onclick="window.location.href='mailto:velocityvanguard@example.com'">Email Us</button>
-    </section>
-    <footer>
-        <p>&copy; 2025 Velocity Vanguard. All rights reserved.</p>
-    </footer>
+    <!-- LinkedIn Feed Column -->
+    <div class="feed-column linkedin-feed">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585" height="300"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466" height="300"></iframe>
+    </div>
+
+    <!-- Instagram Feed Column -->
+    <div class="feed-column instagram-feed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFDz6ufN47u/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DFDz6ufN47u/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DE-gBVnNqCi/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DE-gBVnNqCi/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DE7RKJ7N51R/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DE7RKJ7N51R/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DE5uHmBtk6L/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DE5uHmBtk6L/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DD28oZHNyB2/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DD28oZHNyB2/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDxwec-tv5k/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DDxwec-tv5k/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDiHoP6tAHa/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DDiHoP6tAHa/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDiC-WRqe6k/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DDiC-WRqe6k/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDBBpkKNCKm/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DDBBpkKNCKm/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCz7wDEND8R/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DCz7wDEND8R/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCpkdiGNPEx/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DCpkdiGNPEx/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DChoProtyGg/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DChoProtyGg/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCg4SYfNTxy/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DCg4SYfNTxy/">Instagram Post</a>
+        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCc_ThFtbkl/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DCc_ThFtbkl/">Instagram Post</a>
+        </blockquote>
+    </div>
 </body>
 </html>
