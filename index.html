@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media Feed</title>
+    <title>LinkedIn Posts Grid</title>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -11,106 +11,69 @@
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: #f5f5f7;
             background-color: #1d1d1f;
-            display: flex;
-            flex-direction: row;
-            height: 100%;
         }
 
-        .feed-column {
-            flex: 1;
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             padding: 20px;
-            overflow: auto;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        .linkedin-feed {
-            border-right: 2px solid rgba(255, 255, 255, 0.1);
+        .post {
+            background-color: #2c2c2e;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
 
         iframe {
             width: 100%;
-            margin-bottom: 20px;
             border: none;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .instagram-feed blockquote.instagram-media {
-            margin: 20px auto;
-            max-width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .instagram-feed blockquote.instagram-media a {
-            color: #0071e3;
         }
     </style>
-    <script async src="//www.instagram.com/embed.js"></script>
 </head>
 <body>
-    <!-- LinkedIn Feed Column -->
-    <div class="feed-column linkedin-feed">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585" height="300"></iframe>
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466" height="300"></iframe>
-    </div>
-
-    <!-- Instagram Feed Column -->
-    <div class="feed-column instagram-feed">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFDz6ufN47u/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DFDz6ufN47u/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DE-gBVnNqCi/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DE-gBVnNqCi/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DE7RKJ7N51R/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DE7RKJ7N51R/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DE5uHmBtk6L/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DE5uHmBtk6L/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DD28oZHNyB2/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DD28oZHNyB2/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDxwec-tv5k/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DDxwec-tv5k/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDiHoP6tAHa/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DDiHoP6tAHa/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDiC-WRqe6k/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DDiC-WRqe6k/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDBBpkKNCKm/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DDBBpkKNCKm/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCz7wDEND8R/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DCz7wDEND8R/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCpkdiGNPEx/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DCpkdiGNPEx/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DChoProtyGg/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DChoProtyGg/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCg4SYfNTxy/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DCg4SYfNTxy/">Instagram Post</a>
-        </blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCc_ThFtbkl/" data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DCc_ThFtbkl/">Instagram Post</a>
-        </blockquote>
+    <div class="container">
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" height="300"></iframe>
+        </div>
+        <div class="post">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" height="300"></iframe>
+        </div>
     </div>
 </body>
 </html>
