@@ -1,79 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkedIn Posts Grid</title>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #f5f5f7;
-            background-color: #1d1d1f;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Post Viewer</title>
+  <style>
+    /* Global Styling */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1d1d1f;
+      background-color: #f5f5f7;
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
+    /* Left Main Content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background: #f5f5f7;
+    }
 
-        .post {
-            background-color: #2c2c2e;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
+    .main-content h1 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
 
-        iframe {
-            width: 100%;
-            border: none;
-            border-radius: 10px;
-        }
-    </style>
+    .main-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #6e6e73;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    /* Right Widget Bar */
+    .widget-bar {
+      width: 540px;
+      background: #ffffff;
+      border-left: 1px solid #d2d2d7;
+      box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    .post-container {
+      scroll-snap-align: start;
+      padding: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* Scrollbar Styling */
+    .widget-bar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .widget-bar::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 4px;
+    }
+
+    .widget-bar::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+    .widget-bar::-webkit-scrollbar-track {
+      background-color: #f5f5f7;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" height="300"></iframe>
-        </div>
-        <div class="post">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" height="300"></iframe>
-        </div>
+  <!-- Left Content -->
+  <div class="main-content">
+    <div>
+      <h1>Explore LinkedIn Posts</h1>
+      <p>
+        Stay updated with the latest posts from Velocity Vanguard. Scroll through the widget bar to view each LinkedIn post in its full glory.
+      </p>
     </div>
+  </div>
+
+  <!-- Right Widget Bar -->
+  <div class="widget-bar">
+    <div class="post-container" style="height: 1404px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536"></iframe>
+    </div>
+    <div class="post-container" style="height: 711px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336"></iframe>
+    </div>
+    <div class="post-container" style="height: 816px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096"></iframe>
+    </div>
+    <div class="post-container" style="height: 1047px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792"></iframe>
+    </div>
+    <div class="post-container" style="height: 1046px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464"></iframe>
+    </div>
+    <div class="post-container" style="height: 837px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241"></iframe>
+    </div>
+    <div class="post-container" style="height: 795px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761"></iframe>
+    </div>
+    <div class="post-container" style="height: 753px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248"></iframe>
+    </div>
+    <div class="post-container" style="height: 879px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457"></iframe>
+    </div>
+    <div class="post-container" style="height: 774px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896"></iframe>
+    </div>
+    <div class="post-container" style="height: 753px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672"></iframe>
+    </div>
+    <div class="post-container" style="height: 837px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016"></iframe>
+    </div>
+    <div class="post-container" style="height: 1110px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296"></iframe>
+    </div>
+    <div class="post-container" style="height: 816px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585"></iframe>
+    </div>
+    <div class="post-container" style="height: 627px;">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466"></iframe>
+    </div>
+  </div>
 </body>
 </html>
