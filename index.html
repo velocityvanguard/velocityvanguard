@@ -74,15 +74,12 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
       background: #282828; /* Darker background for post widgets */
-      overflow: hidden;
     }
 
     iframe {
       width: 100%;
       border: none;
       border-radius: 12px;
-      height: auto; /* Ensure iframe height adjusts automatically */
-      min-height: 400px; /* Set a reasonable minimum height to prevent it from shrinking too much */
     }
 
     /* Footer */
@@ -130,49 +127,49 @@
     <!-- Right Widget: LinkedIn Posts -->
     <div class="right-widget">
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" title="Post 1"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="1404" title="Post 1"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" title="Post 2"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="711" title="Post 2"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" title="Post 3"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="816" title="Post 3"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" title="Post 4"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="1047" title="Post 4"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" title="Post 5"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="1046" title="Post 5"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" title="Post 6"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="837" title="Post 6"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" title="Post 7"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" height="795" title="Post 7"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" title="Post 8"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" height="753" title="Post 8"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" title="Post 9"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" height="879" title="Post 9"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" title="Post 10"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" height="774" title="Post 10"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" title="Post 11"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" height="753" title="Post 11"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" title="Post 12"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" height="837" title="Post 12"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296" title="Post 13"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296" height="1110" title="Post 13"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585" title="Post 14"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585" height="816" title="Post 14"></iframe>
       </div>
       <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466" title="Post 15"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466" height="627" title="Post 15"></iframe>
       </div>
     </div>
   </div>
@@ -181,17 +178,5 @@
   <footer>
     <p>© 2025 Velocity Vanguard. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Adjust iframe height dynamically based on content (LinkedIn embeds)
-    const iframes = document.querySelectorAll('iframe');
-    iframes.forEach(iframe => {
-      iframe.onload = function() {
-        const iframeContent = iframe.contentWindow.document.body;
-        const height = iframeContent.scrollHeight;
-        iframe.style.height = `${height}px`; // Adjust iframe height dynamically
-      };
-    });
-  </script>
 </body>
 </html>
