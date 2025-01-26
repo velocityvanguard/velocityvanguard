@@ -3,260 +3,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Velocity Vanguard - Dark Theme</title>
+  <title>Velocity Vanguard - Apple Style</title>
   <style>
-    /* Global Styling */
-    body {
+    /* Enable smooth scrolling globally */
+    html {
+      scroll-behavior: smooth;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: #121212; /* Dark background */
-      color: #e1e1e1; /* Light text color */
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
+      padding: 0;
     }
 
-    /* Toolbar (Navigation Bar) Styling */
-    .toolbar {
+    /* Basic Layout */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1d1d1f; /* Dark background similar to Apple's */
+      color: #f1f1f1; /* Light text color for contrast */
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Navigation Bar */
+    nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #1f1f1f; /* Dark background for toolbar */
-      padding: 10px 20px;
-      display: flex;
-      justify-content: center; /* Center everything */
-      align-items: center;
-      z-index: 100;
-      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-    }
-
-    .toolbar img {
-      max-width: 50px; /* Smaller logo */
-      height: auto;
-      cursor: pointer; /* Make logo clickable */
-      margin-right: 20px; /* Space between logo and buttons */
-    }
-
-    .nav-buttons {
+      background-color: #333; /* Dark background for the navbar */
+      padding: 20px 0;
       display: flex;
       justify-content: center;
+      align-items: center;
+      z-index: 100;
     }
 
-    .nav-buttons button {
-      background: none;
-      border: none;
-      color: #e1e1e1;
+    nav a {
+      color: #ffffff;
+      margin: 0 15px;
+      text-decoration: none;
       font-size: 16px;
-      margin: 0 10px;
+    }
+
+    nav a:hover {
+      color: #ddd;
+    }
+
+    nav img {
+      width: 40px; /* Logo size */
+      margin-right: 15px;
       cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .nav-buttons button:hover {
-      color: #f1f1f1;
-    }
-
-    /* Smooth Scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Main Layout */
-    .main-content {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-      margin-top: 60px; /* Space for fixed toolbar */
-    }
-
-    .left-content {
-      flex: 3;
-      padding: 40px;
-      overflow-y: auto;
-    }
-
-    .right-widget {
-      flex: 1;
-      background-color: #1f1f1f; /* Dark background */
-      border-left: 1px solid #333;
-      box-shadow: -4px 0 6px rgba(0, 0, 0, 0.05);
-      overflow-y: auto;
-      padding: 20px;
-      scroll-snap-type: y mandatory; /* Smooth scroll between posts */
-    }
-
-    .post-widget {
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      background: #1f1f1f;
-      scroll-snap-align: start; /* Snap the post fully into view */
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
     }
 
     /* Section Styling */
     section {
-      padding: 60px 40px;
-      margin-top: 60px; /* Space for fixed toolbar */
-      min-height: 100vh;
-      background-color: #181818;
-      border-bottom: 1px solid #333;
+      width: calc(80% - 300px); /* 10% gap on each side and 300px taken by the sidebar */
+      margin: 80px auto; /* 80px vertical gap between sections and from toolbar */
+      height: 500px; /* Fixed height to make sections squares */
+      padding: 40px;
+      border-radius: 12px; /* Smaller border radius */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Subtle floating effect */
+      background-color: #2c2c2e; /* Slightly lighter grey for sections */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      scroll-margin-top: 80px; /* Adjust scroll position to align with the toolbar */
     }
 
-    section h2 {
-      color: #f1f1f1;
+    /* Specific Section Styles */
+    #intro {
+      background-color: #2c2c2e; /* Light grey background */
     }
 
-    /* Footer Styling */
-    footer {
-      background-color: #1f1f1f;
+    #competition {
+      background-color: #333;
+    }
+
+    #blog {
+      background-color: #3c3c3e;
+    }
+
+    #portfolio {
+      background-color: #444;
+    }
+
+    #sponsors {
+      background-color: #555;
+    }
+
+    #team {
+      background-color: #666;
+    }
+
+    #contact {
+      background-color: #777;
+    }
+
+    /* Sidebar Styling (fixed to the right) */
+    .sidebar {
+      position: fixed;
+      top: 80px; /* Place it below the navbar */
+      right: 0;
+      width: 300px;
+      height: calc(100vh - 80px); /* Full viewport height minus the navbar height */
+      overflow-y: auto;
       padding: 20px;
-      text-align: center;
-      border-top: 1px solid #333;
+      background-color: #333;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 10;
     }
 
-    footer p {
-      font-size: 14px;
-      color: #777;
+    .sidebar iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 20px;
     }
+
+    /* Text Styling */
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
-  <!-- Toolbar (Navigation Bar) -->
-  <div class="toolbar">
-    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/172712143113548573.png" alt="Velocity Vanguard Logo" onclick="scrollToTop()">
-    <div class="nav-buttons">
-      <button onclick="scrollToSection('intro')">Intro</button>
-      <button onclick="scrollToSection('competition')">The Competition</button>
-      <button onclick="scrollToSection('blog')">Blog</button>
-      <button onclick="scrollToSection('portfolio')">Portfolio</button>
-      <button onclick="scrollToSection('sponsors')">Our Sponsors</button>
-      <button onclick="scrollToSection('team')">Meet the Team</button>
-      <button onclick="scrollToSection('contact')">Contact</button>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#"><img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/172712143113548573.png" alt="Company Logo" onclick="window.scrollTo(0, 0)"></a>
+    <a href="#intro">Intro</a>
+    <a href="#competition">The Competition</a>
+    <a href="#blog">Blog</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#sponsors">Our Sponsors</a>
+    <a href="#team">Meet the Team</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Section 1 - Intro -->
+  <section id="intro">
+    <h2>Welcome to Velocity Vanguard</h2>
+    <p>Explore the latest updates, partnerships, and milestones of Velocity Vanguard. Stay inspired as we push the boundaries of F1 in Schools!</p>
+  </section>
+
+  <!-- Section 2 - The Competition -->
+  <section id="competition">
+    <h2>The Competition</h2>
+    <p>Velocity Vanguard is dedicated to innovation, teamwork, and precision. With the support of our partners, we’re setting the standard for excellence in the F1 in Schools competition.</p>
+  </section>
+
+  <!-- Section 3 - Blog -->
+  <section id="blog">
+    <h2>Blog</h2>
+    <p>Stay updated with our latest posts, achievements, and highlights from the world of F1 in Schools!</p>
+  </section>
+
+  <!-- Section 4 - Portfolio -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p>View our past projects, team achievements, and major milestones. Our portfolio showcases our dedication to excellence and innovation.</p>
+  </section>
+
+  <!-- Section 5 - Our Sponsors -->
+  <section id="sponsors">
+    <h2>Our Sponsors</h2>
+    <p>Our journey wouldn’t be possible without the support of our incredible sponsors. We thank them for their trust in us!</p>
+  </section>
+
+  <!-- Section 6 - Meet the Team -->
+  <section id="team">
+    <h2>Meet the Team</h2>
+    <p>Meet the brilliant minds behind Velocity Vanguard, each of whom brings their unique skills and passion to the team.</p>
+  </section>
+
+  <!-- Section 7 - Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>If you'd like to get in touch with us, please reach out through our contact form. We'd love to hear from you!</p>
+  </section>
+
+  <!-- Sidebar with LinkedIn Posts -->
+  <div class="sidebar">
+    <div>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="404" title="Post 1"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="404" title="Post 2"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="404" title="Post 3"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="404" title="Post 4"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="404" title="Post 5"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="404" title="Post 6"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" height="404" title="Post 7"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" height="404" title="Post 8"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" height="404" title="Post 9"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" height="404" title="Post 10"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" height="404" title="Post 11"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" height="404" title="Post 12"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296" height="404" title="Post 13"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585" height="404" title="Post 14"></iframe>
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466" height="404" title="Post 15"></iframe>
     </div>
   </div>
 
-  <!-- Main Content Layout with Sidebar and Sections -->
-  <div class="main-content">
-    <!-- Left Content: Main Sections -->
-    <div class="left-content">
-      <section id="intro">
-        <h2>Intro</h2>
-        <p>Welcome to Velocity Vanguard. We are a team dedicated to pushing the limits of innovation in the F1 in Schools competition.</p>
-      </section>
-
-      <section id="competition">
-        <h2>The Competition</h2>
-        <p>Learn about the challenges and excitement of the F1 in Schools competition and how Velocity Vanguard is making its mark!</p>
-      </section>
-
-      <section id="blog">
-        <h2>Blog</h2>
-        <p>Stay up to date with our latest posts, news, and insights on the F1 in Schools competition and the journey of Velocity Vanguard!</p>
-      </section>
-
-      <section id="portfolio">
-        <h2>Portfolio</h2>
-        <p>Take a look at our past projects, car designs, and other exciting work we've done as part of the F1 in Schools challenge.</p>
-      </section>
-
-      <section id="sponsors">
-        <h2>Our Sponsors</h2>
-        <p>We are proud to be supported by our incredible sponsors who help us succeed. Together, we are making an impact in the world of F1 in Schools.</p>
-      </section>
-
-      <section id="team">
-        <h2>Meet the Team</h2>
-        <p>Get to know the talented individuals behind Velocity Vanguard, our roles, and how we work together to achieve greatness.</p>
-      </section>
-
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>Have any questions or want to get in touch? Reach out to us through our contact form or social media!</p>
-      </section>
-    </div>
-
-    <!-- Right Sidebar: LinkedIn Posts -->
-    <div class="right-widget">
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="1404" title="Post 1"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" height="711" title="Post 2"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" height="816" title="Post 3"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" height="1047" title="Post 4"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" height="1046" title="Post 5"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" height="837" title="Post 6"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" height="795" title="Post 7"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" height="753" title="Post 8"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" height="879" title="Post 9"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" height="774" title="Post 10"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" height="753" title="Post 11"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" height="837" title="Post 12"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296" height="1110" title="Post 13"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585" height="816" title="Post 14"></iframe>
-      </div>
-      <div class="post-widget">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466" height="627" title="Post 15"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Velocity Vanguard. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // Smooth scroll function
-    function scrollToSection(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop - 60,  // Offset to compensate for toolbar height
-          behavior: 'smooth'
-        });
-      }
-    }
-
-    // Scroll to the top of the page when the logo is clicked
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  </script>
 </body>
 </html>
