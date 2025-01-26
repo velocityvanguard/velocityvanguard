@@ -131,13 +131,15 @@
 <body>
   <!-- Toolbar (Navigation Bar) -->
   <div class="toolbar">
-    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/172712143113548573.png" alt="Velocity Vanguard Logo" onclick="window.scrollTo(0, 0)">
+    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/172712143113548573.png" alt="Velocity Vanguard Logo" onclick="scrollToTop()">
     <div class="nav-buttons">
-      <button onclick="document.getElementById('about').scrollIntoView()">About</button>
-      <button onclick="document.getElementById('socials').scrollIntoView()">Social Media</button>
-      <button onclick="document.getElementById('sponsors').scrollIntoView()">Our Sponsors</button>
-      <button onclick="document.getElementById('money-raised').scrollIntoView()">Money Raised</button>
-      <button onclick="document.getElementById('renders').scrollIntoView()">Renders</button>
+      <button onclick="scrollToSection('intro')">Intro</button>
+      <button onclick="scrollToSection('competition')">The Competition</button>
+      <button onclick="scrollToSection('blog')">Blog</button>
+      <button onclick="scrollToSection('portfolio')">Portfolio</button>
+      <button onclick="scrollToSection('sponsors')">Our Sponsors</button>
+      <button onclick="scrollToSection('team')">Meet the Team</button>
+      <button onclick="scrollToSection('contact')">Contact</button>
     </div>
   </div>
 
@@ -145,33 +147,39 @@
   <div class="main-content">
     <!-- Left Content: Main Sections -->
     <div class="left-content">
-      <section id="about">
-        <h2>About Us</h2>
-        <p>Velocity Vanguard is dedicated to innovation, teamwork, and precision. With the support of our partners, we’re setting the standard for excellence in the F1 in Schools competition.</p>
+      <section id="intro">
+        <h2>Intro</h2>
+        <p>Welcome to Velocity Vanguard. We are a team dedicated to pushing the limits of innovation in the F1 in Schools competition.</p>
       </section>
 
-      <section id="socials">
-        <h2>Social Media</h2>
-        <p>Follow us on our social media platforms to stay updated with our latest news and updates!</p>
-        <!-- Add social media links here -->
+      <section id="competition">
+        <h2>The Competition</h2>
+        <p>Learn about the challenges and excitement of the F1 in Schools competition and how Velocity Vanguard is making its mark!</p>
+      </section>
+
+      <section id="blog">
+        <h2>Blog</h2>
+        <p>Stay up to date with our latest posts, news, and insights on the F1 in Schools competition and the journey of Velocity Vanguard!</p>
+      </section>
+
+      <section id="portfolio">
+        <h2>Portfolio</h2>
+        <p>Take a look at our past projects, car designs, and other exciting work we've done as part of the F1 in Schools challenge.</p>
       </section>
 
       <section id="sponsors">
         <h2>Our Sponsors</h2>
         <p>We are proud to be supported by our incredible sponsors who help us succeed. Together, we are making an impact in the world of F1 in Schools.</p>
-        <!-- List sponsors here -->
       </section>
 
-      <section id="money-raised">
-        <h2>Money Raised</h2>
-        <p>Here, you can find details about how much money we’ve raised for our project and how it has helped us reach our goals.</p>
-        <!-- Add financial details or graphs here -->
+      <section id="team">
+        <h2>Meet the Team</h2>
+        <p>Get to know the talented individuals behind Velocity Vanguard, our roles, and how we work together to achieve greatness.</p>
       </section>
 
-      <section id="renders">
-        <h2>Renders</h2>
-        <p>Take a look at the stunning 3D renders of our car designs and other innovative creations!</p>
-        <!-- Add renders images or gallery here -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Have any questions or want to get in touch? Reach out to us through our contact form or social media!</p>
       </section>
     </div>
 
@@ -229,5 +237,26 @@
   <footer>
     <p>© 2025 Velocity Vanguard. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Smooth scroll function
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 60,  // Offset to compensate for toolbar height
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Scroll to the top of the page when the logo is clicked
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
 </body>
 </html>
