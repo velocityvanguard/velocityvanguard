@@ -17,31 +17,50 @@
       overflow: hidden;
     }
 
-    /* Header Styling */
-    header {
-      background-color: #1f1f1f; /* Darker background for header */
-      padding: 20px 40px;
+    /* Toolbar (Navigation Bar) Styling */
+    .toolbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1f1f1f; /* Dark background for toolbar */
+      padding: 10px 20px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center; /* Center everything */
       align-items: center;
-      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark theme */
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     }
 
-    header h1 {
-      font-size: 24px;
-      font-weight: 600;
-      color: #e1e1e1; /* Light color for text */
+    .toolbar img {
+      max-width: 50px; /* Smaller logo */
+      height: auto;
+      cursor: pointer; /* Make logo clickable */
+      margin-right: 20px; /* Space between logo and buttons */
     }
 
-    header nav a {
-      margin-left: 20px;
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-buttons button {
+      background: none;
+      border: none;
+      color: #e1e1e1;
       font-size: 16px;
-      color: #e1e1e1; /* Light color for links */
-      text-decoration: none;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: color 0.3s ease;
     }
 
-    header nav a:hover {
-      text-decoration: underline;
+    .nav-buttons button:hover {
+      color: #f1f1f1;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
     }
 
     /* Main Layout */
@@ -49,31 +68,31 @@
       display: flex;
       flex: 1;
       overflow: hidden;
+      margin-top: 60px; /* Space for fixed toolbar */
     }
 
     .left-content {
       flex: 3;
       padding: 40px;
       overflow-y: auto;
-      background-color: #181818; /* Slightly lighter dark background for content */
-      border-right: 1px solid #333; /* Border for contrast */
     }
 
     .right-widget {
       flex: 1;
-      background-color: #1f1f1f; /* Dark background for right widget */
+      background-color: #1f1f1f; /* Dark background */
       border-left: 1px solid #333;
-      box-shadow: -4px 0 6px rgba(255, 255, 255, 0.05);
+      box-shadow: -4px 0 6px rgba(0, 0, 0, 0.05);
       overflow-y: auto;
       padding: 20px;
-      scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory; /* Smooth scroll between posts */
     }
 
     .post-widget {
       margin-bottom: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-      background: #282828; /* Darker background for post widgets */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: #1f1f1f;
+      scroll-snap-align: start; /* Snap the post fully into view */
     }
 
     iframe {
@@ -82,7 +101,20 @@
       border-radius: 12px;
     }
 
-    /* Footer */
+    /* Section Styling */
+    section {
+      padding: 60px 40px;
+      margin-top: 60px; /* Space for fixed toolbar */
+      min-height: 100vh;
+      background-color: #181818;
+      border-bottom: 1px solid #333;
+    }
+
+    section h2 {
+      color: #f1f1f1;
+    }
+
+    /* Footer Styling */
     footer {
       background-color: #1f1f1f;
       padding: 20px;
@@ -92,39 +124,58 @@
 
     footer p {
       font-size: 14px;
-      color: #777; /* Lighter color for footer text */
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Velocity Vanguard</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+  <!-- Toolbar (Navigation Bar) -->
+  <div class="toolbar">
+    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/172712143113548573.png" alt="Velocity Vanguard Logo" onclick="window.scrollTo(0, 0)">
+    <div class="nav-buttons">
+      <button onclick="document.getElementById('about').scrollIntoView()">About</button>
+      <button onclick="document.getElementById('socials').scrollIntoView()">Social Media</button>
+      <button onclick="document.getElementById('sponsors').scrollIntoView()">Our Sponsors</button>
+      <button onclick="document.getElementById('money-raised').scrollIntoView()">Money Raised</button>
+      <button onclick="document.getElementById('renders').scrollIntoView()">Renders</button>
+    </div>
+  </div>
 
-  <!-- Main Content -->
+  <!-- Main Content Layout with Sidebar and Sections -->
   <div class="main-content">
-    <!-- Left Content: Main Apple-Style Section -->
+    <!-- Left Content: Main Sections -->
     <div class="left-content">
-      <h2>Welcome to Velocity Vanguard</h2>
-      <p>Explore the latest updates, partnerships, and milestones of Velocity Vanguard. Stay inspired as we push the boundaries of F1 in Schools!</p>
+      <section id="about">
+        <h2>About Us</h2>
+        <p>Velocity Vanguard is dedicated to innovation, teamwork, and precision. With the support of our partners, we’re setting the standard for excellence in the F1 in Schools competition.</p>
+      </section>
 
-      <h3>About Us</h3>
-      <p>Velocity Vanguard is dedicated to innovation, teamwork, and precision. With the support of our partners, we’re setting the standard for excellence in the F1 in Schools competition.</p>
+      <section id="socials">
+        <h2>Social Media</h2>
+        <p>Follow us on our social media platforms to stay updated with our latest news and updates!</p>
+        <!-- Add social media links here -->
+      </section>
 
-      <h3>Our Journey</h3>
-      <p>From local competitions to the global stage, our story is a testament to resilience and collaboration. We thank our sponsors for believing in us every step of the way.</p>
+      <section id="sponsors">
+        <h2>Our Sponsors</h2>
+        <p>We are proud to be supported by our incredible sponsors who help us succeed. Together, we are making an impact in the world of F1 in Schools.</p>
+        <!-- List sponsors here -->
+      </section>
 
-      <h3>Join the Mission</h3>
-      <p>Discover more about our team, our values, and how you can get involved. Together, let’s make history!</p>
+      <section id="money-raised">
+        <h2>Money Raised</h2>
+        <p>Here, you can find details about how much money we’ve raised for our project and how it has helped us reach our goals.</p>
+        <!-- Add financial details or graphs here -->
+      </section>
+
+      <section id="renders">
+        <h2>Renders</h2>
+        <p>Take a look at the stunning 3D renders of our car designs and other innovative creations!</p>
+        <!-- Add renders images or gallery here -->
+      </section>
     </div>
 
-    <!-- Right Widget: LinkedIn Posts -->
+    <!-- Right Sidebar: LinkedIn Posts -->
     <div class="right-widget">
       <div class="post-widget">
         <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="1404" title="Post 1"></iframe>
