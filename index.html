@@ -3,197 +3,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Velocity Vanguard</title>
+  <title>Apple-like Website with Stacked Cubes</title>
   <style>
-    /* General Reset */
-    body, html {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
       font-family: Arial, sans-serif;
-      background-color: #1c1c1e;
-      color: #fff;
-      overflow-x: hidden;
+      background-color: #f5f5f7;
+    }
+
+    .container {
+      display: flex;
       height: 100%;
     }
 
-    /* Top Toolbar */
-    .toolbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #2c2c2e;
-      padding: 10px 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* Left Half (70% width) */
+    .left-half {
+      width: 70%;
+      height: auto;
+      position: relative;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .toolbar ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-    }
-
-    .toolbar ul li {
-      margin: 0 15px;
-    }
-
-    .toolbar ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    .toolbar ul li a:hover {
-      color: #007BFF;
-    }
-
-    /* Layout Wrapper */
-    .layout {
-      display: flex;
-      margin-top: 60px; /* Account for fixed toolbar height */
-      height: calc(100vh - 60px); /* Fill the remaining viewport height */
-    }
-
-    /* Left Content Area */
-    .main-content {
-      flex: 1 0 70%; /* Takes up 70% of the width */
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100vh; /* Ensure full height */
-      scroll-behavior: smooth; /* Enable smooth scroll */
-    }
-
-    .sections {
-      width: 100%;
-    }
-
-    section {
-      margin-bottom: 40px;
-      padding: 40px;
-      border-radius: 20px; /* Rounded corners */
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      background-color: #2c2c2e;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      scroll-margin-top: 70px;
-      height: 1000px; /* Set height to 1000px */
-      width: 80%; /* Consistent width for sections */
-      text-align: center;
-    }
-
-    /* Right Sidebar */
-    .sidebar {
-      flex: 0 0 30%; /* Always takes up 30% of the width */
-      background-color: #2c2c2e;
+    /* Right Half (30% width) */
+    .right-half {
+      width: 30%;
+      background-color: #333;
+      color: white;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      position: fixed; /* Fix sidebar to the right */
-      right: 0;
-      top: 0; /* Align it to the top */
-      bottom: 0;
-      overflow-y: auto; /* Sidebar content can scroll */
+      gap: 20px;
     }
 
-    .sidebar iframe {
-      width: 100%; /* Make posts fit flush within the sidebar */
-      height: 400px;
-      border: 2px solid #333;
-      border-radius: 5px;
+    /* Social Widgets */
+    .social-widgets {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 20px;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .layout {
-        flex-direction: column;
-      }
+    .widget {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #444;
+      flex: 1;
+      padding: 10px;
+      height: 60px;
+      border-radius: 10px;
+      color: white;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
 
-      .main-content,
-      .sidebar {
-        flex: 1 0 auto; /* Stack sections vertically */
-        width: 100%; /* Full width for both sections */
-      }
+    .widget:hover {
+      background-color: #555;
+    }
 
-      .sidebar {
-        position: relative;
-        top: auto;
-        right: auto;
-        border-left: none;
-        width: 100%;
-        bottom: 0; /* Position the sidebar at the bottom */
-      }
+    .widget img {
+      width: 24px;
+      height: 24px;
+      margin-right: auto; /* Ensure the logo stays pinned to the left */
+    }
+
+    .widget span {
+      flex-grow: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; /* Prevent text overflow */
+    }
+
+    /* Toolbar inside Left Half */
+    .toolbar {
+      display: flex;
+      justify-content: space-around;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 70%;
+      z-index: 1;
+    }
+
+    .toolbar button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .toolbar button:hover {
+      color: #ffcc00;
+    }
+
+    /* Styling for the cubes */
+    .cube {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    /* Differentiating cube colors */
+    .cube1 {
+      background-color: #e0e0e0; /* Light Grey */
+    }
+
+    .cube2 {
+      background-color: #cfcfcf; /* Medium Grey */
+    }
+
+    .cube3 {
+      background-color: #b0b0b0; /* Darker Grey */
+    }
+
+    /* Custom Scrollbar Styles */
+    .left-half::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .left-half::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .left-half::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .left-half::-webkit-scrollbar-thumb:hover {
+      background: #555;
     }
   </style>
 </head>
 <body>
-  <!-- Toolbar -->
-  <div class="toolbar">
-    <ul>
-      <li><a href="#intro">Intro</a></li>
-      <li><a href="#competition">Competition</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#sponsors">Sponsors</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
+  <div class="container">
+    <!-- Left Half -->
+    <div class="left-half" id="left-half">
+      <div id="cube1" class="cube cube1">
+        <h2>Cube 1</h2>
+        <p>This is the content for Cube 1. It's light grey.</p>
+      </div>
 
-  <div class="layout">
-    <!-- Left Content Area -->
-    <div class="main-content">
-      <div class="sections">
-        <section id="intro">
-          <h2>Welcome to Velocity Vanguard</h2>
-          <p>Explore the latest updates, partnerships, and milestones of Velocity Vanguard. Stay inspired as we push the boundaries of F1 in Schools!</p>
-        </section>
-        <section id="competition">
-          <h2>The Competition</h2>
-          <p>Velocity Vanguard is dedicated to innovation, teamwork, and precision. With the support of our partners, we’re setting the standard for excellence in the F1 in Schools competition.</p>
-        </section>
-        <section id="blog">
-          <h2>Blog</h2>
-          <p>Stay updated with our latest posts, achievements, and highlights from the world of F1 in Schools!</p>
-        </section>
-        <section id="portfolio">
-          <h2>Portfolio</h2>
-          <p>View our past projects, team achievements, and major milestones. Our portfolio showcases our dedication to excellence and innovation.</p>
-        </section>
-        <section id="sponsors">
-          <h2>Our Sponsors</h2>
-          <p>Our journey wouldn’t be possible without the support of our incredible sponsors. We thank them for their trust in us!</p>
-        </section>
-        <section id="team">
-          <h2>Meet the Team</h2>
-          <p>Meet the brilliant minds behind Velocity Vanguard, each of whom brings their unique skills and passion to the team.</p>
-        </section>
-        <section id="contact">
-          <h2>Contact</h2>
-          <p>If you'd like to get in touch with us, please reach out through our contact form. We'd love to hear from you!</p>
-        </section>
+      <div id="cube2" class="cube cube2">
+        <h2>Cube 2</h2>
+        <p>This is the content for Cube 2. It's medium grey.</p>
+      </div>
+
+      <div id="cube3" class="cube cube3">
+        <h2>Cube 3</h2>
+        <p>This is the content for Cube 3. It's darker grey.</p>
       </div>
     </div>
 
-    <!-- Right Sidebar -->
-    <div class="sidebar">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" height="400" title="Post 1"></iframe>
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489537" height="400" title="Post 2"></iframe>
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489538" height="400" title="Post 3"></iframe>
+    <!-- Right Half -->
+    <div class="right-half">
+      <!-- Social Widgets -->
+      <div class="social-widgets">
+        <!-- Instagram Widget -->
+        <a href="https://instagram.com/velocityvanguard.motorsports" class="widget" target="_blank">
+          <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/instagram-icon-white-on-black%20(1).png" alt="Instagram Logo">
+          <span>velocityvanguard.motorsports</span>
+        </a>
+
+        <!-- LinkedIn Widget -->
+        <a href="https://linkedin.com/company/velocity-vanguard" class="widget" target="_blank">
+          <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/image_2025-01-27_225648516-modified%20(1).png" alt="LinkedIn Logo">
+          <span>velocity vanguard</span>
+        </a>
+      </div>
     </div>
   </div>
 
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button onclick="glideToCube(1)">Cube 1</button>
+    <button onclick="glideToCube(2)">Cube 2</button>
+    <button onclick="glideToCube(3)">Cube 3</button>
+  </div>
+
+  <script>
+    // Function to glide to a specific cube
+    function glideToCube(cubeNumber) {
+      const cube = document.getElementById(`cube${cubeNumber}`);
+      cube.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Initialize the first cube on page load
+    window.onload = function() {
+      glideToCube(1);
+    };
+  </script>
 </body>
 </html>
