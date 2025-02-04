@@ -1,455 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple-like Website with Stacked Cubes</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f7;
-    }
-
-    .container {
-      display: flex;
-      height: 100%;
-    }
-
-    /* Left Half (70% width) */
-    .left-half {
-      width: 85%;
-      height: auto;
-      position: relative;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* Right Half (30% width) */
-    .right-half {
-      width: 15%;
-      background-color: #333;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      overflow: hidden; /* Prevent scrolling on the right side */
-    }
-
-    /* Social Widgets */
-    .social-widgets {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap; /* Allow wrapping on small screens */
-    }
-
-    .widget {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: #444;
-      flex: 1;
-      padding: 10px;
-      height: 60px;
-      border-radius: 10px;
-      color: white;
-      font-size: 14px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .widget:hover {
-      background-color: #555;
-    }
-
-    .widget img {
-      width: 24px;
-      height: 24px;
-      margin-right: auto; /* Ensure the logo stays pinned to the left */
-    }
-
-    .widget span {
-      flex-grow: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; /* Prevent text overflow */
-    }
-
-    /* Combined Widget */
-    .combined-widget {
-      background-color: #444;
-      color: white;
-      padding: 0; /* Remove padding to maximize space for the embed */
-      border-radius: 10px;
-      text-align: center;
-      flex-basis: 100%; /* Make it span the full width */
-      font-size: 16px;
-      transition: font-size 0.3s ease, padding 0.3s ease;
-      overflow: hidden; /* Ensure the embed doesn't overflow */
-      display: flex;
-      flex-direction: column;
-      height: calc(100vh - 200px); /* Adjust height to fit within the right half */
-    }
-
-    /* LinkedIn Embed Container */
-    .linkedin-embed {
-      width: 100%;
-      height: 100%; /* Ensure it takes the full height of its container */
-      display: none;
-      border-radius: 10px; /* Rounded corners */
-      overflow: hidden; /* Prevent overflow */
-    }
-
-    .linkedin-embed.active {
-      display: block;
-    }
-
-    .linkedin-embed iframe {
-      width: 100%;
-      height: calc(100% + 50px); /* Add extra height to account for LinkedIn's scaling issues */
-      border: none; /* Remove iframe border */
-      border-radius: 10px; /* Rounded corners */
-      transform: scale(1); /* Ensure no zooming */
-      transform-origin: top center; /* Anchor scaling to the top-center to stay aligned */
-    }
-
-    /* Toolbar inside Left Half */
-    .toolbar {
-      display: flex;
-      justify-content: space-around;
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 85%;
-      z-index: 1;
-    }
-
-    .toolbar button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .toolbar button:hover {
-      color: #ffcc00;
-    }
-
-    /* Styling for the cubes */
-    .cube {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    /* Differentiating cube colors */
-    .cube1 {
-      background-color: #e0e0e0; /* Light Grey */
-    }
-
-    .cube2 {
-      background-color: #cfcfcf; /* Medium Grey */
-    }
-
-    .cube3 {
-      background-color: #b0b0b0; /* Darker Grey */
-    }
-
-    /* Custom Scrollbar Styles */
-    .left-half::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .left-half::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .left-half::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 10px;
-      transition: background 0.3s ease;
-    }
-
-    .left-half::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .social-widgets {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .widget {
-        width: 100%;
-        font-size: 12px;
-        height: 50px;
-      }
-
-      .widget img {
-        width: 20px;
-        height: 20px;
-      }
-
-      .combined-widget {
-        font-size: 14px;
-        padding: 12px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .social-widgets {
-        gap: 10px;
-      }
-
-      .widget {
-        font-size: 10px;
-        height: 40px;
-      }
-
-      .widget img {
-        width: 18px;
-        height: 18px;
-      }
-
-      .combined-widget {
-        font-size: 12px;
-        padding: 10px;
-      }
-    }
-
-    /* New Circle Widget for Navigation */
-    .circle-widget {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .circle-btn {
-      width: 50px;
-      height: 50px;
-      background-color: #444;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .circle-btn:hover {
-      background-color: #555;
-    }
-
-    .circle-btn img {
-      width: 24px;
-      height: 24px;
-    }
-
-    .circle-btn.disabled {
-      background-color: #777;
-      cursor: not-allowed;
-    }
-
-    .circle-btn.disabled:hover {
-      background-color: #777;
-    }
-
-
-
-
-    
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Left Half -->
-    <div class="left-half" id="left-half">
-      <div id="cube1" class="cube cube1">
-        <h2>Cube 1</h2>
-        <p>This is the content for Cube 1. It's light grey.</p>
-      </div>
-
-      <div id="cube2" class="cube cube2">
-        <h2>Cube 2</h2>
-        <p>This is the content for Cube 2. It's medium grey.</p>
-      </div>
-
-      <div id="cube3" class="cube cube3">
-        <h2>Cube 3</h2>
-        <p>This is the content for Cube 3. It's darker grey.</p>
-      </div>
-    </div>
-
-    <!-- Right Half -->
-    <div class="right-half">
-      <!-- Social Widgets -->
-      <div class="social-widgets">
-        <!-- Instagram Widget -->
-        <a href="https://instagram.com/velocityvanguard.motorsports" class="widget" target="_blank">
-          <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/instagram-icon-white-on-black%20(1).png" alt="Instagram Logo">
-          <span>velocityvanguard.motorsports</span>
-        </a>
-
-        <!-- LinkedIn Widget -->
-        <a href="https://linkedin.com/company/velocity-vanguard" class="widget" target="_blank">
-          <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/image_2025-01-27_225648516-modified%20(1).png" alt="LinkedIn Logo">
-          <span>velocity vanguard</span>
-        </a>
-      </div>
-
-      <!-- New Combined Widget -->
-      <div class="combined-widget">
-        <div class="linkedin-embed active">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7290135722848612352" title="Latest Post"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536" title="Post 1"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336" title="Post 2"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096" title="Post 3"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792" title="Post 4"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464" title="Post 5"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241" title="Post 6"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761" title="Post 7"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248" title="Post 8"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457" title="Post 9"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896" title="Post 10"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672" title="Post 11"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016" title="Post 12"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296" title="Post 13"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585" title="Post 14"></iframe>
-        </div>
-        <div class="linkedin-embed">
-          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466" title="Post 15"></iframe>
-        </div>
-      </div>
-
-      <!-- Navigation Arrows -->
-      <div class="circle-widget">
-        <!-- Left Arrow -->
-        <div class="circle-btn" id="left-arrow-btn">
-          <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/44889-modified%20-%20Copy.png" alt="Left Arrow">
-        </div>
-
-        <!-- Right Arrow -->
-        <div class="circle-btn" id="right-arrow-btn">
-          <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/44889-modified.png" alt="Right Arrow">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toolbar -->
-  <div class="toolbar">
-    <button onclick="glideToCube(1)">Cube 1</button>
-    <button onclick="glideToCube(2)">Cube 2</button>
-    <button onclick="glideToCube(3)">Cube 3</button>
-  </div>
-
-  <script>
-    // Function to glide to a specific cube
-    function glideToCube(cubeNumber) {
-      const cube = document.getElementById(`cube${cubeNumber}`);
-      cube.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Initialize the first cube on page load
-    window.onload = function() {
-      glideToCube(1);
-    };
-
-    // LinkedIn Embed Navigation
-    const linkedinEmbeds = document.querySelectorAll('.linkedin-embed');
-    const leftArrowBtn = document.getElementById('left-arrow-btn');
-    const rightArrowBtn = document.getElementById('right-arrow-btn');
-    let currentIndex = 0;
-
-    function updateArrows() {
-      if (currentIndex === 0) {
-        leftArrowBtn.classList.add('disabled');
-      } else {
-        leftArrowBtn.classList.remove('disabled');
-      }
-
-      if (currentIndex === linkedinEmbeds.length - 1) {
-        rightArrowBtn.classList.add('disabled');
-      } else {
-        rightArrowBtn.classList.remove('disabled');
-      }
-    }
-
-    function showEmbed(index) {
-      linkedinEmbeds.forEach((embed, i) => {
-        if (i === index) {
-          embed.classList.add('active');
-        } else {
-          embed.classList.remove('active');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple-like Website with Stacked Cubes</title>
+    <style>
+        /* Combined Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      });
-      currentIndex = index;
-      updateArrows();
-    }
 
-    leftArrowBtn.onclick = function() {
-      if (currentIndex > 0) {
-        showEmbed(currentIndex - 1);
-      }
-    };
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f7;
+        }
 
-    rightArrowBtn.onclick = function() {
-      if (currentIndex < linkedinEmbeds.length - 1) {
-        showEmbed(currentIndex + 1);
-      }
-    };
+        .container {
+            display: flex;
+            height: 100%;
+        }
 
-    // Initialize the first embed
-    showEmbed(0);
-  </script>
+        .left-half {
+            width: 85%;
+            height: auto;
+            position: relative;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .right-half {
+            width: 15%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .social-widgets {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .widget {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #444;
+            flex: 1;
+            padding: 10px;
+            height: 60px;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .widget:hover {
+            background-color: #555;
+        }
+
+        .widget img {
+            width: 24px;
+            height: 24px;
+            margin-right: auto;
+        }
+
+        .widget span {
+            flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .combined-widget {
+            background-color: #444;
+            color: white;
+            padding: 0;
+            border-radius: 10px;
+            text-align: center;
+            flex-basis: 100%;
+            font-size: 16px;
+            transition: font-size 0.3s ease, padding 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px);
+        }
+
+        .linkedin-embed {
+            width: 100%;
+            height: 100%;
+            display: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .linkedin-embed.active {
+            display: block;
+        }
+
+        .linkedin-embed iframe {
+            width: 100%;
+            height: calc(100% + 50px);
+            border: none;
+            border-radius: 10px;
+            transform: scale(1);
+            transform-origin: top center;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            z-index: 1;
+        }
+
+        .toolbar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .toolbar button:hover {
+            color: #ffcc00;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+        }
+
+        .cube1 {
+            background-color: #e0e0e0;
+        }
+
+        .cube2 {
+            background-color: #cfcfcf;
+        }
+
+        .cube3 {
+            background-color: #b0b0b0;
+        }
+
+        .cube4 {
+            width: 100%;
+            height: auto;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .cube4 .social-widgets {
+            justify-content: center;
+            gap: 20px;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cube4 .widget {
+            flex: 1;
+            margin: 0;
+        }
+
+        .cube4 .widget:first-child {
+            margin-left: 0;
+        }
+
+        .cube4 .widget:last-child {
+            margin-right: 0;
+        }
+
+        .cube4 .combined-widget {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cube4 .linkedin-embed {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .cube4 .linkedin-embed iframe {
+            border: none; /* Remove any borders */
+            margin: 0; /* Remove any margins */
+            display: block; /* Make sure it fills the container */
+            width: 100%; /* Ensure it takes full width */
+            height: 1500px; /* Ensure it takes full height */
+        }
+
+        .left-half::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .left-half::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .left-half::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .left-half::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @media (max-width: 768px) {
+            .social-widgets {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .widget {
+                width: 100%;
+                font-size: 12px;
+                height: 50px;
+            }
+
+            .widget img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .combined-widget {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .cube4 {
+                display: flex;
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .right-half {
+                display: none;
+            }
+
+            .left-half {
+                width: 100%;
+            }
+
+            .cube4 {
+                display: block;
+            }
+
+            .cube4-btn {
+                display: inline-block;
+            }
+
+            .toolbar {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-widgets {
+                gap: 10px;
+            }
+
+            .widget {
+                font-size: 10px;
+                height: 40px;
+            }
+
+            .widget img {
+                width: 18px;
+                height: 18px;
+            }
+
+            .combined-widget {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+
+        .circle-widget {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .circle-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .circle-btn:hover {
+            background-color: #555;
+        }
+
+        .circle-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .circle-btn.disabled {
+            background-color: #777;
+            cursor: not-allowed;
+        }
+
+        .circle-btn.disabled:hover {
+            background-color: #777;
+        }
+
+        .circle-widget .circle-btn {
+            position: relative;
+            top: auto;
+            transform: none;
+        }
+
+        .combined-widget {
+            margin-top: 20px;
+        }
+
+        .social-widgets {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-half" id="left-half">
+            <div id="cube1" class="cube cube1">
+                <h2>Cube 1</h2>
+                <p>This is the content for Cube 1. It's light grey.</p>
+            </div>
+            <div id="cube2" class="cube cube2">
+                <h2>Cube 2</h2>
+                <p>This is the content for Cube 2. It's medium grey.</p>
+            </div>
+            <div id="cube3" class="cube cube3">
+                <h2>Cube 3</h2>
+                <p>This is the content for Cube 3. It's darker grey.</p>
+            </div>
+            <div id="cube4" class="cube cube4">
+                <div class="social-widgets">
+                    <a href="https://instagram.com/velocityvanguard.motorsports" class="widget" target="_blank">
+                        <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/instagram-icon-white-on-black%20(1).png"
+                            alt="Instagram Logo">
+                        <span>velocityvanguard.motorsports</span>
+                    </a>
+                    <a href="https://linkedin.com/company/velocity-vanguard" class="widget" target="_blank">
+                        <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/image_2025-01-27_225648516-modified%20(1).png"
+                            alt="LinkedIn Logo">
+                        <span>velocity vanguard</span>
+                    </a>
+                </div>
+                <div class="circle-widget">
+                    <div class="circle-btn" id="left-arrow-btn-cube4">
+                        <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/44889-modified%20-%20Copy.png"
+                            alt="Left Arrow">
+                    </div>
+                    <div class="circle-btn" id="right-arrow-btn-cube4">
+                        <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/44889-modified.png"
+                            alt="Right Arrow">
+                    </div>
+                </div>
+                <div class="combined-widget">
+                    <div class="linkedin-embed active">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7291422792976105473"
+                            title="Latest Post"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7290135722848612352"
+                            title="Latest Post"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536"
+                            title="Post 1"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336"
+                            title="Post 2"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096"
+                            title="Post 3"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792"
+                            title="Post 4"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464"
+                            title="Post 5"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241"
+                            title="Post 6"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761"
+                            title="Post 7"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248"
+                            title="Post 8"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457"
+                            title="Post 9"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896"
+                            title="Post 10"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672"
+                            title="Post 11"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016"
+                            title="Post 12"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296"
+                            title="Post 13"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585"
+                            title="Post 14"></iframe>
+                    </div>
+                    <div class="linkedin-embed">
+                        <iframe
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466"
+                            title="Post 15"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-half">
+            <div class="social-widgets">
+                <a href="https://instagram.com/velocityvanguard.motorsports" class="widget" target="_blank">
+                    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/instagram-icon-white-on-black%20(1).png" alt="Instagram Logo">
+                    <span>velocityvanguard.motorsports</span>
+                </a>
+                <a href="https://linkedin.com/company/velocity-vanguard" class="widget" target="_blank">
+                    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/image_2025-01-27_225648516-modified%20(1).png"
+                        alt="LinkedIn Logo">
+                    <span>velocity vanguard</span>
+                </a>
+            </div>
+            <div class="circle-widget">
+                <div class="circle-btn" id="left-arrow-btn-right">
+                    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/44889-modified%20-%20Copy.png"
+                        alt="Left Arrow">
+                </div>
+                <div class="circle-btn" id="right-arrow-btn-right">
+                    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/44889-modified.png"
+                        alt="Right Arrow">
+                </div>
+            </div>
+            <div class="combined-widget">
+                <div class="linkedin-embed active">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7291422792976105473"
+                        title="Latest Post"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7290135722848612352"
+                        title="Latest Post"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7287192940647489536"
+                        title="Post 1"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7286445173784334336"
+                        title="Post 2"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285990369354244096"
+                        title="Post 3"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7285772807655841792"
+                        title="Post 4"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7268787669541822464"
+                        title="Post 5"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7275644875172106241"
+                        title="Post 6"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7273444315203317761"
+                        title="Post 7"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267239663768117248"
+                        title="Post 8"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7266943282847379457"
+                        title="Post 9"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7264367097009360896"
+                        title="Post 10"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7262418127206940672"
+                        title="Post 11"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7261894104236630016"
+                        title="Post 12"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7260711452490039296"
+                        title="Post 13"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585"
+                        title="Post 14"></iframe>
+                </div>
+                <div class="linkedin-embed">
+                    <iframe
+                        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250265901978046466"
+                        title="Post 15"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toolbar">
+        <button onclick="glideToCube(1)">Cube 1</button>
+        <button onclick="glideToCube(2)">Cube 2</button>
+        <button onclick="glideToCube(3)">Cube 3</button>
+        <button class="cube4-btn" onclick="glideToCube(4)">Cube 4</button>
+    </div>
+
+    <script>
+        function glideToCube(cubeNumber) {
+            const cube = document.getElementById(`cube${cubeNumber}`);
+            cube.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = function () {
+            glideToCube(1);
+        };
+
+        // Cube 4 Navigation
+        const cube4Embeds = document.querySelectorAll('#cube4 .linkedin-embed');
+        const leftArrowBtnCube4 = document.getElementById('left-arrow-btn-cube4');
+        const rightArrowBtnCube4 = document.getElementById('right-arrow-btn-cube4');
+        let cube4CurrentIndex = 0;
+
+        function updateCube4Arrows() {
+            if (cube4CurrentIndex === 0) {
+                leftArrowBtnCube4.classList.add('disabled');
+            } else {
+                leftArrowBtnCube4.classList.remove('disabled');
+            }
+
+            if (cube4CurrentIndex === cube4Embeds.length - 1) {
+                rightArrowBtnCube4.classList.add('disabled');
+            } else {
+                rightArrowBtnCube4.classList.remove('disabled');
+            }
+        }
+
+        function showCube4Embed(index) {
+            cube4Embeds.forEach((embed, i) => {
+                if (i === index) {
+                    embed.classList.add('active');
+                } else {
+                    embed.classList.remove('active');
+                }
+            });
+            cube4CurrentIndex = index;
+            updateCube4Arrows();
+        }
+
+        leftArrowBtnCube4.onclick = function () {
+            if (cube4CurrentIndex > 0) {
+                showCube4Embed(cube4CurrentIndex - 1);
+            }
+        };
+
+        rightArrowBtnCube4.onclick = function () {
+            if (cube4CurrentIndex < cube4Embeds.length - 1) {
+                showCube4Embed(cube4CurrentIndex + 1);
+            }
+        };
+
+        showCube4Embed(0);
+
+        // Right Half Navigation
+        const rightHalfEmbeds = document.querySelectorAll('.right-half .linkedin-embed');
+        const leftArrowBtnRight = document.getElementById('left-arrow-btn-right');
+        const rightArrowBtnRight = document.getElementById('right-arrow-btn-right');
+        let rightCurrentIndex = 0;
+
+        function updateRightArrows() {
+            if (rightCurrentIndex === 0) {
+                leftArrowBtnRight.classList.add('disabled');
+            } else {
+                leftArrowBtnRight.classList.remove('disabled');
+            }
+
+            if (rightCurrentIndex === rightHalfEmbeds.length - 1) {
+                rightArrowBtnRight.classList.add('disabled');
+            } else {
+                rightArrowBtnRight.classList.remove('disabled');
+            }
+        }
+
+        function showRightEmbed(index) {
+            rightHalfEmbeds.forEach((embed, i) => {
+                if (i === index) {
+                    embed.classList.add('active');
+                } else {
+                    embed.classList.remove('active');
+                }
+            });
+            rightCurrentIndex = index;
+            updateRightArrows();
+        }
+
+        leftArrowBtnRight.onclick = function () {
+            if (rightCurrentIndex > 0) {
+                showRightEmbed(rightCurrentIndex - 1);
+            }
+        };
+
+        rightArrowBtnRight.onclick = function () {
+            if (rightCurrentIndex < rightHalfEmbeds.length - 1) {
+                showRightEmbed(rightCurrentIndex + 1);
+            }
+        };
+
+        showRightEmbed(0);
+    </script>
 </body>
+
 </html>
