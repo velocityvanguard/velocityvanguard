@@ -237,6 +237,12 @@
             background: #555;
         }
 
+        @media (min-width: 769px) {
+            .cube4-btn {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .social-widgets {
                 flex-direction: column;
@@ -247,11 +253,6 @@
                 width: 100%;
                 font-size: 12px;
                 height: 50px;
-            }
-
-            .widget img {
-                width: 20px;
-                height: 20px;
             }
 
             .combined-widget {
@@ -491,8 +492,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="right-half">
+<div class="right-half">
             <div class="social-widgets">
                 <a href="https://instagram.com/velocityvanguard.motorsports" class="widget" target="_blank">
                     <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/instagram-icon-white-on-black%20(1).png" alt="Instagram Logo">
@@ -653,8 +653,7 @@
             updateCube4Arrows();
         }
 
-        leftArrowBtnCube4.onclick = function () {
-            if (cube4CurrentIndex > 0) {
+        leftArrowBtnCube4.onclick = function () {if (cube4CurrentIndex > 0) {
                 showCube4Embed(cube4CurrentIndex - 1);
             }
         };
