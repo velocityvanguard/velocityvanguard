@@ -313,7 +313,7 @@
         .circle-widget {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center
             gap: 10px;
             margin-top: 10px;
             position: relative;
@@ -369,16 +369,24 @@
     <div class="container">
         <div class="left-half" id="left-half">
             <div id="cube1" class="cube cube1">
-                <h2>Cube 1</h2>
-                <p>This is the content for Cube 1. It's light grey.</p>
+                <h2>Home</h2>
+                <p>This is the content for Home. It's light grey.</p>
             </div>
             <div id="cube2" class="cube cube2">
-                <h2>Cube 2</h2>
-                <p>This is the content for Cube 2. It's medium grey.</p>
+                <h2>Showroom</h2>
+                <p>This is the content for Showroom. It's medium grey.</p>
             </div>
             <div id="cube3" class="cube cube3">
-                <h2>Cube 3</h2>
-                <p>This is the content for Cube 3. It's darker grey.</p>
+                <h2>Journey</h2>
+                <p>This is the content for Journey. It's darker grey.</p>
+            </div>
+            <div id="cube5" class="cube cube2">
+                <h2>Sponsors</h2>
+                <p>This is the content for Sponsors. It's medium grey.</p>
+            </div>
+            <div id="cube6" class="cube cube3">
+                <h2>Media</h2>
+                <p>This is the content for Media. It's darker grey.</p>
             </div>
             <div id="cube4" class="cube cube4">
                 <div class="social-widgets">
@@ -481,7 +489,7 @@
                     </div>
                     <div class="linkedin-embed">
                         <iframe
-                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7250428482478915585"
+                            src="https://www.linkedin.com/embed/feed/update/urn:li:share:72850428482478915585"
                             title="Post 14"></iframe>
                     </div>
                     <div class="linkedin-embed">
@@ -492,10 +500,11 @@
                 </div>
             </div>
         </div>
-<div class="right-half">
+        <div class="right-half">
             <div class="social-widgets">
                 <a href="https://instagram.com/velocityvanguard.motorsports" class="widget" target="_blank">
-                    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/instagram-icon-white-on-black%20(1).png" alt="Instagram Logo">
+                    <img src="https://raw.githubusercontent.com/velocityvanguard/velocityvanguard/refs/heads/main/instagram-icon-white-on-black%20(1).png"
+                        alt="Instagram Logo">
                     <span>velocityvanguard.motorsports</span>
                 </a>
                 <a href="https://linkedin.com/company/velocity-vanguard" class="widget" target="_blank">
@@ -605,10 +614,12 @@
     </div>
 
     <div class="toolbar">
-        <button onclick="glideToCube(1)">Cube 1</button>
-        <button onclick="glideToCube(2)">Cube 2</button>
-        <button onclick="glideToCube(3)">Cube 3</button>
-        <button class="cube4-btn" onclick="glideToCube(4)">Cube 4</button>
+        <button onclick="glideToCube(1)">Home</button>
+        <button onclick="glideToCube(2)">Showroom</button>
+        <button onclick="glideToCube(3)">Journey</button>
+        <button onclick="glideToCube(5)">Sponsors</button>
+        <button onclick="glideToCube(6)">Media</button>
+        <button class="cube4-btn" onclick="glideToCube(4)">Socials</button>
     </div>
 
     <script>
@@ -634,7 +645,7 @@
                 leftArrowBtnCube4.classList.remove('disabled');
             }
 
-            if (cube4CurrentIndex === cube4Embeds.length - 1) {
+            if (cube4CurrentIndex === cube4Embeds.length- 1) {
                 rightArrowBtnCube4.classList.add('disabled');
             } else {
                 rightArrowBtnCube4.classList.remove('disabled');
@@ -653,7 +664,8 @@
             updateCube4Arrows();
         }
 
-        leftArrowBtnCube4.onclick = function () {if (cube4CurrentIndex > 0) {
+        leftArrowBtnCube4.onclick = function () {
+            if (cube4CurrentIndex > 0) {
                 showCube4Embed(cube4CurrentIndex - 1);
             }
         };
