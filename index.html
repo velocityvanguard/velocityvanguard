@@ -105,6 +105,7 @@
             display: none;
             border-radius: 10px;
             overflow: hidden;
+            transition: transform 0.3s ease-in-out;
         }
 
         .linkedin-embed.active {
@@ -362,6 +363,14 @@
 
         .social-widgets {
             margin-bottom: 10px;
+        }
+        @keyframes slideLeft {
+          from {
+            transform: translateX(100%);
+          }
+          to {
+            transform: translateX(0);
+          }
         }
     </style>
 </head>
@@ -654,15 +663,17 @@
         }
 
         function showCube4Embed(index) {
-            cube4Embeds.forEach((embed, i) => {
-                if (i === index) {
-                    embed.classList.add('active');
-                } else {
-                    embed.classList.remove('active');
-                }
-            });
-            cube4CurrentIndex = index;
-            updateCube4Arrows();
+          cube4Embeds.forEach((embed, i) => {
+            if (i === index) {
+              embed.classList.add('active');
+              embed.style.transform = 'translateX(0)';
+            } else {
+              embed.classList.remove('active');
+              embed.style.transform = 'translateX(-100%)';
+            }
+          });
+          cube4CurrentIndex = index;
+          updateCube4Arrows();
         }
 
         leftArrowBtnCube4.onclick = function () {
@@ -700,15 +711,17 @@
         }
 
         function showRightEmbed(index) {
-            rightHalfEmbeds.forEach((embed, i) => {
-                if (i === index) {
-                    embed.classList.add('active');
-                } else {
-                    embed.classList.remove('active');
-                }
-            });
-            rightCurrentIndex = index;
-            updateRightArrows();
+          rightHalfEmbeds.forEach((embed, i) => {
+            if (i === index) {
+              embed.classList.add('active');
+              embed.style.transform = 'translateX(0)';
+            } else {
+              embed.classList.remove('active');
+              embed.style.transform = 'translateX(-100%)';
+            }
+          });
+          rightCurrentIndex = index;
+          updateRightArrows();
         }
 
         leftArrowBtnRight.onclick = function () {
